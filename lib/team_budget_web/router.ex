@@ -6,12 +6,17 @@ defmodule TeamBudgetWeb.Router do
     plug :accepts, ["json"]
   end
 
-  # coveralls-ignore-stop
-
   scope "/api", TeamBudgetWeb do
     pipe_through :api
+
+    forward "/graphql", Absinthe.Plug, schema: TeamBudgetWeb.Graphql.Schema
+
+    if Mix.env() == :dev do
+      forward "/graphiql", Absinthe.Plug.GraphiQL, schema: TeamBudgetWeb.Graphql.Schema
+    end
   end
 
+  # coveralls-ignore-stop
   # coveralls-ignore-start
 
   # Enables LiveDashboard only for development

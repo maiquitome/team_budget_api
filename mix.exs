@@ -51,6 +51,9 @@ defmodule TeamBudget.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
+      {:absinthe, "~> 1.6.0"},
+      {:absinthe_phoenix, "~> 2.0.0"},
+      {:absinthe_error_payload, "~> 1.1"},
 
       # only DEV
       {:sobelow, "~> 0.11.1", only: :dev},

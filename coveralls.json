@@ -5,7 +5,8 @@
     "lib/team_budget_web/views/error_helpers.ex",
     "lib/team_budget_web/telemetry.ex",
     "test/support/channel_case.ex",
-    "test/support/data_case.ex"
+    "test/support/data_case.ex",
+    "deps/absinthe/lib/absinthe/phase/schema/"
   ],
   "coverage_options": {
     "treat_no_relevant_lines_as_covered": true,
