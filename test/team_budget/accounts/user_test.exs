@@ -1,8 +1,8 @@
 defmodule TeamBudget.Accounts.UserTest do
   use TeamBudget.DataCase, async: true
-  
+
   import TeamBudget.Factory
-  
+
   alias Ecto.Changeset
   alias TeamBudget.Accounts.User
 

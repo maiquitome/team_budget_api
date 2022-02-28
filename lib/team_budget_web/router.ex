@@ -1,7 +1,6 @@
 defmodule TeamBudgetWeb.Router do
   use TeamBudgetWeb, :router
 
-
   # coveralls-ignore-start
   pipeline :api do
     plug :accepts, ["json"]
@@ -17,7 +16,9 @@ defmodule TeamBudgetWeb.Router do
     forward "/graphql", Absinthe.Plug, schema: TeamBudgetWeb.Graphql.Schema, json_code: Jason
 
     if Mix.env() == :dev do
-      forward "/graphiql", Absinthe.Plug.GraphiQL, schema: TeamBudgetWeb.Graphql.Schema, json_code: Jason
+      forward "/graphiql", Absinthe.Plug.GraphiQL,
+        schema: TeamBudgetWeb.Graphql.Schema,
+        json_code: Jason
     end
   end
 
