@@ -52,6 +52,9 @@ defmodule TeamBudget.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
 
+      # only DEV
+      {:sobelow, "~> 0.11.1", only: :dev},
+
       # only DEV and TEST
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
 
