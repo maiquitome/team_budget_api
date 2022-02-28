@@ -55,7 +55,7 @@ defmodule TeamBudget.MixProject do
       {:absinthe_phoenix, "~> 2.0.0"},
       {:absinthe_error_payload, "~> 1.1"},
       {:argon2_elixir, "~> 3.0"},
-
+  
       # only DEV
       {:sobelow, "~> 0.11.1", only: :dev},
 
@@ -64,7 +64,8 @@ defmodule TeamBudget.MixProject do
       {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
 
       # only TEST
-      {:excoveralls, "~> 0.14.4", only: :test}
+      {:excoveralls, "~> 0.14.4", only: :test},
+      {:ex_machina, "~> 2.7", only: :test}
     ]
   end
 
