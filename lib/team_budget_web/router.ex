@@ -6,10 +6,10 @@ defmodule TeamBudgetWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", TeamBudgetWeb do
+  scope "/", TeamBudgetWeb do
     pipe_through :api
 
-    forward "/graphql", Absinthe.Plug, schema: TeamBudgetWeb.Graphql.Schema
+    # forward "/graphql", Absinthe.Plug, schema: TeamBudgetWeb.Graphql.Schema
 
     if Mix.env() == :dev do
       forward "/graphiql", Absinthe.Plug.GraphiQL, schema: TeamBudgetWeb.Graphql.Schema
