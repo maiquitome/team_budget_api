@@ -16,7 +16,7 @@ defmodule TeamBudgetWeb.Graphql.Types.User do
     field :first_name, non_null(:string)
     field :last_name, :string
     field :email, non_null(:string)
-    field :role, non_null(:string)
+    field :role, :string
   end
 
   input_object :create_user_input do
@@ -24,7 +24,8 @@ defmodule TeamBudgetWeb.Graphql.Types.User do
     field :last_name, :string
     field :email, non_null(:string)
     field :password, non_null(:string)
-    field :role, non_null(:string)
+    field :password_confirmation, non_null(:string)
+    field :role, :string
   end
 
   object :user_queries do
@@ -44,14 +45,14 @@ defmodule TeamBudgetWeb.Graphql.Types.User do
     end
   end
 
-  # object :user_mutation do
-  #   @desc "Creates a new user"
-  #   field :create_user, type: :user_payload do
-  #     arg :input, non_null(:create_user_input)
-  #     # middleware(Authorize, :user)
-  #     resolve &UserResolver.create/2
-  #     middleware(&build_payload/2)
-  #     middleware(Log)
-  #   end
-  # end
+  object :user_mutation do
+    @desc "Creates a new user"
+    field :create_user, type: :user_payload do
+      arg :input, non_null(:create_user_input)
+      # middleware(Authorize, :user)
+      resolve &UserResolver.create/2
+      middleware(&build_payload/2)
+      middleware(Log)
+    end
+  end
 end

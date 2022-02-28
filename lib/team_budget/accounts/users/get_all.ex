@@ -6,6 +6,6 @@ defmodule TeamBudget.Accounts.Users.GetAll do
   alias TeamBudget.{Accounts.User, Repo}
 
   def call do
-    Repo.all(User)
+    {:ok, Repo.all(User)}
   end
 end
