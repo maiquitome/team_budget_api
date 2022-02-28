@@ -1,13 +1,18 @@
 defmodule TeamBudgetWeb.Router do
   use TeamBudgetWeb, :router
 
+  # coveralls-ignore-start
   pipeline :api do
     plug :accepts, ["json"]
   end
 
+  # coveralls-ignore-stop
+
   scope "/api", TeamBudgetWeb do
     pipe_through :api
   end
+
+  # coveralls-ignore-start
 
   # Enables LiveDashboard only for development
   #
@@ -25,6 +30,8 @@ defmodule TeamBudgetWeb.Router do
       live_dashboard "/dashboard", metrics: TeamBudgetWeb.Telemetry
     end
   end
+
+  # coveralls-ignore-stop
 
   # Enables the Swoosh mailbox preview in development.
   #
