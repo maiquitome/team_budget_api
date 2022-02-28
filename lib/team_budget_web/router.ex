@@ -11,9 +11,9 @@ defmodule TeamBudgetWeb.Router do
 
     # forward "/graphql", Absinthe.Plug, schema: TeamBudgetWeb.Graphql.Schema
 
-    if Mix.env() == :dev do
-      forward "/graphiql", Absinthe.Plug.GraphiQL, schema: TeamBudgetWeb.Graphql.Schema
-    end
+    # if Mix.env() == :dev do
+    #   forward "/graphiql", Absinthe.Plug.GraphiQL, schema: TeamBudgetWeb.Graphql.Schema
+    # end
   end
 
   # coveralls-ignore-stop
