@@ -8,8 +8,9 @@ defmodule TeamBudgetWeb.Graphql.Schema do
   import_types TeamBudgetWeb.Graphql.Types
 
   query do
+    import_fields :user_queries
   end
 
-  mutation do
-  end
+  # mutation do
+  # end
 end

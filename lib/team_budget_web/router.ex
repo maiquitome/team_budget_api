@@ -8,12 +8,18 @@ defmodule TeamBudgetWeb.Router do
 
   scope "/", TeamBudgetWeb do
     pipe_through :api
+  end
 
-    # forward "/graphql", Absinthe.Plug, schema: TeamBudgetWeb.Graphql.Schema
+  scope "/" do
+    pipe_through :api
 
-    # if Mix.env() == :dev do
-    #   forward "/graphiql", Absinthe.Plug.GraphiQL, schema: TeamBudgetWeb.Graphql.Schema
-    # end
+    forward "/graphql", Absinthe.Plug, schema: TeamBudgetWeb.Graphql.Schema, json_code: Jason
+
+    if Mix.env() == :dev do
+      forward "/graphiql", Absinthe.Plug.GraphiQL,
+        schema: TeamBudgetWeb.Graphql.Schema,
+        json_code: Jason
+    end
   end
 
   # coveralls-ignore-stop
