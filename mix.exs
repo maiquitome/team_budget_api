@@ -57,6 +57,7 @@ defmodule TeamBudget.MixProject do
 
       # only DEV and TEST
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
 
       # only TEST
       {:excoveralls, "~> 0.14.4", only: :test}
