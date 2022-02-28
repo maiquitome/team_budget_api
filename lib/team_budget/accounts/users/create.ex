@@ -11,7 +11,8 @@ defmodule TeamBudget.Accounts.Users.Create do
           last_name: String.t(),
           email: String.t(),
           password: String.t(),
-          password_confirmation: String.t()
+          password_confirmation: String.t(),
+          role: String.t()
         }
 
   @doc """

@@ -13,10 +13,11 @@ defmodule TeamBudget.Accounts.Users.GetAllTest do
 
       response = GetAll.call()
 
-      assert [
-               %User{id: "b721fcad-e6e8-4e8f-910b-6911f2158b4a"},
-               %User{id: "f2bf724b-d482-42d5-bd38-8a6a79c3934f"}
-             ] = response
+      assert {:ok,
+              [
+                %User{id: "b721fcad-e6e8-4e8f-910b-6911f2158b4a"},
+                %User{id: "f2bf724b-d482-42d5-bd38-8a6a79c3934f"}
+              ]} = response
     end
   end
 end
