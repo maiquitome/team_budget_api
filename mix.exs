@@ -56,6 +56,7 @@ defmodule TeamBudget.MixProject do
       {:absinthe_error_payload, "~> 1.1"},
       {:argon2_elixir, "~> 3.0"},
       {:guardian, "~> 2.0"},
+      {:slugify, "~> 1.3"},
 
       # only DEV
       {:sobelow, "~> 0.11.1", only: :dev},
