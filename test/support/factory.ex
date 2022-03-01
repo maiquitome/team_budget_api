@@ -4,7 +4,7 @@ defmodule TeamBudget.Factory do
   """
   use ExMachina.Ecto, repo: TeamBudget.Repo
 
-  alias TeamBudget.Accounts.User
+  alias TeamBudget.Accounts.Data.User
 
   def user_params_factory do
     %{

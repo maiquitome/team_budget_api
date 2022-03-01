@@ -4,12 +4,12 @@ defmodule TeamBudget.Accounts.Users.GetByEmail do
   """
 
   alias Ecto.Schema
-  alias TeamBudget.{Accounts.User, Repo}
+  alias TeamBudget.{Accounts.Data.User, Repo}
 
   @doc """
   ## Examples
 
-      iex> alias TeamBudget.Accounts.{User, Users.Create, Users.GetByEmail}
+      iex> alias TeamBudget.Accounts.{Data.User, Users.Create, Users.GetByEmail}
       ...>
       ...> params = %{
       ...>  first_name: "Maiqui",

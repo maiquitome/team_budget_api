@@ -5,6 +5,8 @@ on: pull_request
 jobs: 
   tests:
     runs-on: ubuntu-latest
+    env:
+      SECRET_KEY_GUARDIAN: ${{ secrets.SECRET_KEY_GUARDIAN }}
     strategy:
       matrix:
         elixir: [1.13.3]

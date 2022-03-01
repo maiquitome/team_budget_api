@@ -4,7 +4,7 @@ defmodule TeamBudget.Accounts.Users.GetAllTest do
 
   import TeamBudget.Factory
 
-  alias TeamBudget.Accounts.{User, Users.GetAll}
+  alias TeamBudget.Accounts.{Data.User, Users.GetAll}
 
   describe "call/0" do
     test "success" do

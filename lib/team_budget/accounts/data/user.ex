@@ -1,4 +1,4 @@
-defmodule TeamBudget.Accounts.User do
+defmodule TeamBudget.Accounts.Data.User do
   @moduledoc """
   User Schema.
   """

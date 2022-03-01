@@ -6,7 +6,7 @@ defmodule TeamBudgetWeb.Auth.Guardian do
   use Guardian, otp_app: :team_budget
 
   alias TeamBudget.Accounts
-  alias TeamBudget.Accounts.User
+  alias TeamBudget.Accounts.Data.User
 
   def subject_for_token(%User{id: id}, _claims), do: {:ok, id}
   def subject_for_token(_, _), do: {:error, "Unknown resource type"}
@@ -22,7 +22,7 @@ defmodule TeamBudgetWeb.Auth.Guardian do
   @doc """
   ## Examples
 
-    iex> alias TeamBudget.Accounts.{User, Users.Create}
+    iex> alias TeamBudget.Accounts.{Data.User, Users.Create}
     ...>
     ...> params = %{
     ...>  first_name: "Maiqui",

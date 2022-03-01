@@ -3,7 +3,7 @@ defmodule TeamBudget.Accounts.Users.GetAll do
   Module to fetch the user list.
   """
 
-  alias TeamBudget.{Accounts.User, Repo}
+  alias TeamBudget.{Accounts.Data.User, Repo}
 
   def call do
     {:ok, Repo.all(User)}
