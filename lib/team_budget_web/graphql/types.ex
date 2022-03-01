@@ -10,6 +10,7 @@ defmodule TeamBudgetWeb.Graphql.Types do
 
   import_types AbsintheErrorPayload.ValidationMessageTypes
 
+  import_types Types.Auth
   import_types Types.Custom.UUID4
   import_types Types.User
 end
