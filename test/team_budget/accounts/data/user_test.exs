@@ -1,4 +1,4 @@
-defmodule TeamBudget.Accounts.UserTest do
+defmodule TeamBudget.Accounts.Data.UserTest do
   use TeamBudget.DataCase, async: true
 
   import TeamBudget.Factory
