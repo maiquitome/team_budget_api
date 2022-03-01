@@ -4,7 +4,7 @@ defmodule TeamBudget.Accounts.Users.Create do
   """
 
   alias Ecto.{Changeset, Schema}
-  alias TeamBudget.{Accounts.User, Repo}
+  alias TeamBudget.{Accounts.Data.User, Repo}
 
   @type params :: %{
           first_name: String.t(),
@@ -20,7 +20,7 @@ defmodule TeamBudget.Accounts.Users.Create do
 
   ## Examples
 
-      iex> alias TeamBudget.Accounts.{User, Users.Create}
+      iex> alias TeamBudget.Accounts.{Data.User, Users.Create}
       ...>
       ...> params = %{
       ...>  first_name: "Maiqui",

@@ -4,7 +4,7 @@ defmodule TeamBudget.Accounts.UserTest do
   import TeamBudget.Factory
 
   alias Ecto.Changeset
-  alias TeamBudget.Accounts.User
+  alias TeamBudget.Accounts.Data.User
 
   describe "changeset/1" do
     test "when all params are valid, returns a valid changeset" do
