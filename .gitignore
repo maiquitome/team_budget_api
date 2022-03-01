@@ -25,3 +25,6 @@ team_budget-*.tar
 # intellij
 .idea
 team_budget.iml
+
+# ENV
+.env
