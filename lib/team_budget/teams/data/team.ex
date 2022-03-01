@@ -1,4 +1,8 @@
-defmodule TeamBudget.Team do
+defmodule TeamBudget.Teams.Data.Team do
+  @moduledoc """
+  Team Struct.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
