@@ -7,6 +7,7 @@ defmodule TeamBudget.Teams.Data.Team do
   import Ecto.Changeset
 
   alias Core.Utils
+  alias TeamBudget.Accounts.Data.User
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -14,7 +15,8 @@ defmodule TeamBudget.Teams.Data.Team do
     field :description, :string
     field :name, :string
     field :slug, :string
-    field :user_id, :binary_id
+
+    belongs_to :user, User
 
     timestamps()
   end
@@ -26,8 +28,8 @@ defmodule TeamBudget.Teams.Data.Team do
   @doc false
   def changeset(team, attrs) do
     team
-    |> cast(attrs, [:name, :slug, :description])
-    |> validate_required([:name, :description])
+    |> cast(attrs, [:name, :slug, :description, :user_id])
+    |> validate_required([:name, :description, :user_id])
     |> Utils.create_slug(:name)
     |> unique_constraint(:slug)
     |> unique_constraint(:name)
