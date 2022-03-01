@@ -4,6 +4,7 @@ defmodule TeamBudgetWeb.Router do
   # coveralls-ignore-start
   pipeline :api do
     plug :accepts, ["json"]
+    plug TeamBudgetWeb.Graphql.Plugs.Context
   end
 
   scope "/", TeamBudgetWeb do

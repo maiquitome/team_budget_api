@@ -5,7 +5,7 @@ defmodule TeamBudgetWeb.Graphql.Types.User do
 
   use Absinthe.Schema.Notation
 
-  alias TeamBudgetWeb.Graphql.Middlewares.Log
+  alias TeamBudgetWeb.Graphql.Middlewares.{Authorize, Log}
   alias TeamBudgetWeb.Graphql.Resolvers.User, as: UserResolver
 
   import AbsintheErrorPayload.Payload
@@ -39,7 +39,7 @@ defmodule TeamBudgetWeb.Graphql.Types.User do
 
     @desc "Gets all users"
     field :users, list_of(:user) do
-      # middleware(Authorize, :user)
+      middleware(Authorize, :user)
       resolve &UserResolver.get_all/2
       middleware(Log)
     end
@@ -49,7 +49,7 @@ defmodule TeamBudgetWeb.Graphql.Types.User do
     @desc "Creates a new user"
     field :create_user, type: :user_payload do
       arg :input, non_null(:create_user_input)
-      # middleware(Authorize, :user)
+      middleware(Authorize, :user)
       resolve &UserResolver.create/2
       middleware(&build_payload/2)
       middleware(Log)
