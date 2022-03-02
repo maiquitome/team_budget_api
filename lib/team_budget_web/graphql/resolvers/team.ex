@@ -2,8 +2,8 @@ defmodule TeamBudgetWeb.Graphql.Resolvers.Team do
   @moduledoc """
   User Resolver.
   """
-  alias TeamBudget.Teams
   alias TeamBudget.Accounts.Data.User
+  alias TeamBudget.Teams
 
   def get_all_teams_by_user_id(%{user_id: user_id}, _resolution) do
     Teams.get_all_teams_by_user_id(user_id)

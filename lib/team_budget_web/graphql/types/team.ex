@@ -1,13 +1,17 @@
 defmodule TeamBudgetWeb.Graphql.Types.Team do
+  @moduledoc """
+  Graphql Team Type.
+  """
+
   use Absinthe.Schema.Notation
   import Absinthe.Resolution.Helpers
 
   import AbsintheErrorPayload.Payload
   payload_object(:team_payload, :team)
 
+  alias TeamBudget.Teams.Data.Team
   alias TeamBudgetWeb.Graphql.Middlewares.{Authorize, Log}
   alias TeamBudgetWeb.Graphql.Resolvers.Team, as: TeamResolver
-  alias TeamBudget.Teams.Data.Team
 
   object :team do
     field :id, non_null(:uuid4)
