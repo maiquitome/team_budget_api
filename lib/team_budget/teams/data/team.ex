@@ -21,6 +21,10 @@ defmodule TeamBudget.Teams.Data.Team do
     timestamps()
   end
 
+  def data, do: Dataloader.Ecto.new(TeamBudget.Repo, query: &query/2)
+
+  def query(queryable, _params), do: queryable
+
   def changeset(attrs \\ %{}) do
     changeset(%__MODULE__{}, attrs)
   end
