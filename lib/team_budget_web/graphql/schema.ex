@@ -10,6 +10,7 @@ defmodule TeamBudgetWeb.Graphql.Schema do
 
   query do
     import_fields :user_queries
+    import_fields :team_queries
   end
 
   mutation do
