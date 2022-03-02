@@ -21,7 +21,6 @@ defmodule TeamBudgetWeb.Graphql.Resolvers.Team do
           }
         }
       ) do
-
     Teams.get_all_teams_by_user_id(id_of_the_logged_in_user)
   end
 end

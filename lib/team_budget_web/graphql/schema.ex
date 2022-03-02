@@ -20,8 +20,8 @@ defmodule TeamBudgetWeb.Graphql.Schema do
 
   def context(context) do
     loader =
-      Dataloader.new
-      |> Dataloader.add_source(Team, Team.data)
+      Dataloader.new()
+      |> Dataloader.add_source(Team, Team.data())
 
     Map.put(context, :loader, loader)
   end
