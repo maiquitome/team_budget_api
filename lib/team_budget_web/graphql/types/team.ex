@@ -9,7 +9,7 @@ defmodule TeamBudgetWeb.Graphql.Types.Team do
   import AbsintheErrorPayload.Payload
   payload_object(:team_payload, :team)
 
-  alias TeamBudget.Teams.Data.Team
+  alias TeamBudget.{Projects.Data.Project, Teams.Data.Team}
   alias TeamBudgetWeb.Graphql.Middlewares.{Authorize, Log}
   alias TeamBudgetWeb.Graphql.Resolvers.Team, as: TeamResolver
 
@@ -22,6 +22,7 @@ defmodule TeamBudgetWeb.Graphql.Types.Team do
     field :total_budget, :string
 
     field :user, :user, resolve: dataloader(Team)
+    field :projects, list_of(:projects), resolve: dataloader(Project)
   end
 
   input_object :team_input do
