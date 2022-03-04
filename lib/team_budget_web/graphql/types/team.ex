@@ -19,6 +19,7 @@ defmodule TeamBudgetWeb.Graphql.Types.Team do
     field :description, non_null(:string)
     field :slug, non_null(:string)
     field :user_id, non_null(:uuid4)
+    field :total_budget, :string
 
     field :user, :user, resolve: dataloader(Team)
   end
