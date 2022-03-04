@@ -10,7 +10,6 @@ defmodule TeamBudget.Invites.Server.SendEmail do
 
   def call({:ok, [%Invite{} | _] = invites}) do
     Enum.each(invites, &send_email/1)
-    # |> IO.inspect(label: "INVITES :::::::::::::::: ")
   end
 
   defp send_email(%Invite{} = invite) do
@@ -21,7 +20,6 @@ defmodule TeamBudget.Invites.Server.SendEmail do
       |> subject("[ELXPRO TeamBudget] - You were invited to join to a team #{invite.team.slug}")
       |> create_email_based_if_user_has_account(invite, invite.email_has_account)
       |> Mailer.deliver_now()
-      |> IO.inspect(label: "EMAIL :::::::::::::::: ")
     end)
   end
 
