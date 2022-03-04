@@ -11,7 +11,7 @@ defmodule TeamBudgetWeb.Auth.Guardian do
   def subject_for_token(%User{id: id}, _claims), do: {:ok, id}
   def subject_for_token(_, _), do: {:error, "Unknown resource type"}
 
-  def resource_from_claims(%{"sub" => id}), do: {:ok, Accounts.get_by_id(id)}
+  def resource_from_claims(%{"sub" => id}), do: Accounts.get_user_by_id(id)
   def resource_from_claims(_claims), do: {:error, "Unknown resource type"}
 
   @spec verify(Guardian.Token.token()) :: {:ok, Guardian.Token.claims()} | {:error, any}
@@ -59,7 +59,7 @@ defmodule TeamBudgetWeb.Auth.Guardian do
 
   """
   def authenticate(%{email: email, password: password}) do
-    with {:ok, %User{} = user} <- Accounts.get_by_email(email),
+    with {:ok, %User{} = user} <- Accounts.get_user_by_email(email),
          {:ok, %User{} = user} <- Argon2.check_pass(user, password),
          {:ok, token, _claims} <- encode_and_sign(user) do
       {:ok, %{token: token, user: user}}

@@ -10,6 +10,6 @@ defmodule TeamBudget.Accounts do
 
   defdelegate create_user(attrs), to: UserCreate, as: :call
   defdelegate get_all_users(), to: UserGetAll, as: :call
-  defdelegate get_by_email(email), to: UserGetByEmail, as: :call
-  defdelegate get_by_id(id), to: UserGetById, as: :call
+  defdelegate get_user_by_email(email), to: UserGetByEmail, as: :call
+  defdelegate get_user_by_id(id), to: UserGetById, as: :call
 end

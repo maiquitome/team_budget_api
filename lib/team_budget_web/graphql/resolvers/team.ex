@@ -14,10 +14,7 @@ defmodule TeamBudgetWeb.Graphql.Resolvers.Team do
         _params,
         %{
           context: %{
-            current_user: {
-              :ok,
-              %User{id: id_of_the_logged_in_user}
-            }
+            current_user: %User{id: id_of_the_logged_in_user}
           }
         }
       ) do

@@ -16,6 +16,27 @@ config :team_budget, TeamBudgetWeb.Auth.Guardian,
   issuer: "team_budget",
   secret_key: System.get_env("SECRET_KEY_GUARDIAN")
 
+# Mailer Bamboo.SMTPAdapter
+config :team_budget, TeamBudget.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: System.get_env("SMTP_HOST"),
+  hostname: System.get_env("SMTP_HOST"),
+  port: System.get_env("SMTP_PORT"),
+  username: System.get_env("SMTP_USERNAME"),
+  password: System.get_env("SMTP_PASSWORD"),
+  tls: :if_available,
+  allowed_tls_versions: [:tlsv1, :"tlsv1.1", :"tlsv1.2"],
+  tls_log_level: :error,
+  tls_verify: :verify_peer,
+  tls_cacertfile: "/somewhere/on/disk",
+  tls_cacerts: "…",
+  tls_depth: 3,
+  tls_verify_fun: {&:ssl_verify_hostname.verify_fun/3, check_hostname: "example.com"},
+  ssl: false,
+  retries: 1,
+  no_mx_lookups: false,
+  auth: :cram_md5
+
 # Configures the endpoint
 config :team_budget, TeamBudgetWeb.Endpoint,
   url: [host: "localhost"],
@@ -30,10 +51,10 @@ config :team_budget, TeamBudgetWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :team_budget, TeamBudget.Mailer, adapter: Swoosh.Adapters.Local
+# config :team_budget, TeamBudget.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
-config :swoosh, :api_client, false
+# config :swoosh, :api_client, false
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -27,7 +27,7 @@ defmodule TeamBudget.MixProject do
   def application do
     [
       mod: {TeamBudget.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :bamboo, :bamboo_smtp]
     ]
   end
 
@@ -58,6 +58,8 @@ defmodule TeamBudget.MixProject do
       {:guardian, "~> 2.0"},
       {:slugify, "~> 1.3"},
       {:dataloader, "~> 1.0.0"},
+      {:bamboo, "~> 2.2.0"},
+      {:bamboo_smtp, "~> 4.1.0"},
 
       # only DEV
       {:sobelow, "~> 0.11.1", only: :dev},

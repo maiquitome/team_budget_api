@@ -16,6 +16,7 @@ defmodule TeamBudgetWeb.Graphql.Schema do
   mutation do
     import_fields :user_mutation
     import_fields :auth_mutation
+    import_fields :invite_mutation
   end
 
   def context(context) do
