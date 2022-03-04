@@ -25,6 +25,7 @@ defmodule TeamBudget.Accounts.Data.User do
     field :role, :string, default: "user"
 
     has_many :teams, Team
+    many_to_many :members, Team, join_through: Member, on_replace: :delete
     many_to_many :invites, Team, join_through: Invite, on_replace: :delete
 
     timestamps()
