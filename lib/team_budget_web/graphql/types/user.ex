@@ -35,7 +35,7 @@ defmodule TeamBudgetWeb.Graphql.Types.User do
     # field :user, type: :user do
     #   arg :id, non_null(:uuid4)
     #   middleware(Authorize, :user)
-    #   resolve &UserResolver.get_by_id/2
+    #   resolve &UserResolver.get_user_by_id/2
     #   middleware(Log)
     # end
 
