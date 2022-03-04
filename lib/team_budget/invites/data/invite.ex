@@ -5,7 +5,7 @@ defmodule TeamBudget.Invites.Data.Invite do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias TeamBudget.{Teams.Data.Team, Users.Data.User}
+  alias TeamBudget.{Accounts.Data.User, Teams.Data.Team}
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
