@@ -6,7 +6,7 @@ defmodule TeamBudgetWeb.Graphql.Types.Project do
 
   object :project do
     field :id, :uuid4
-    field :budget, :decimal
+    field :budget, :string
     field :description, :string
     field :name, :string
     field :slug, :string
