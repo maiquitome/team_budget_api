@@ -21,6 +21,7 @@ defmodule TeamBudget.Teams.Data.Team do
     field :description, :string
     field :name, :string
     field :slug, :string
+    field :total_budget, :decimal, virtual: true, default: Decimal.new("0")
 
     belongs_to :user, User
 
