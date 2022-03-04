@@ -10,19 +10,19 @@ alias TeamBudget.{Accounts.Data.User, Members.Data.Member, Repo}
     teams: [
       %{
         name: "elxpro graphql",
-        description: "learn more about graphql with this team"
-        # projects: [
-        #   %{
-        #     name: "graphQl api finance",
-        #     description: "api to show assets durind the day",
-        #     budget: Decimal.new("300000")
-        #   },
-        #   %{
-        #     name: "liveview finance",
-        #     description: "show assets durind the day",
-        #     budget: Decimal.new("323002")
-        #   }
-        # ]
+        description: "learn more about graphql with this team",
+        projects: [
+          %{
+            name: "graphQl api finance",
+            description: "api to show assets durind the day",
+            budget: Decimal.new("300000")
+          },
+          %{
+            name: "liveview finance",
+            description: "show assets durind the day",
+            budget: Decimal.new("323002")
+          }
+        ]
       },
       %{
         name: "elxpro liveview",
@@ -36,10 +36,10 @@ alias TeamBudget.{Accounts.Data.User, Members.Data.Member, Repo}
 %Member{user_id: user_id, team_id: team_id}
 |> Repo.insert!()
 
-{:ok, u2} =
+{:ok, _u2} =
   %{
-    first_name: "Test1",
-    last_name: "1Test",
+    first_name: "Test2",
+    last_name: "2Test",
     email: "t2@elxpro.com",
     password: "123456",
     password_confirmation: "123456"
@@ -47,7 +47,7 @@ alias TeamBudget.{Accounts.Data.User, Members.Data.Member, Repo}
   |> User.changeset()
   |> Repo.insert()
 
-{:ok, u3} =
+{:ok, _u3} =
   %{
     first_name: "Test3",
     last_name: "3Test",
