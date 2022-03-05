@@ -5,14 +5,19 @@ defmodule Core.Utils.Slug.Create do
 
   alias Ecto.Changeset
 
+  @spec call(changeset :: Changeset.t(), field :: atom()) :: Changeset.t()
+
   def call(%Changeset{changes: changes} = changeset, field) when is_atom(field) do
-    slug =
-      changes
-      |> Map.get(field)
-      |> Slug.slugify()
+    case Map.get(changes, field) do
+      nil ->
+        changeset
 
-    changes = Map.put(changes, :slug, slug)
+      field_value ->
+        slug = Slug.slugify(field_value)
 
-    %Changeset{changeset | changes: changes}
+        changes = Map.put(changes, :slug, slug)
+
+        %Changeset{changeset | changes: changes}
+    end
   end
 end
