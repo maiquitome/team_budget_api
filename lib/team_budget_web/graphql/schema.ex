@@ -11,12 +11,14 @@ defmodule TeamBudgetWeb.Graphql.Schema do
   query do
     import_fields :user_queries
     import_fields :team_queries
+    import_fields :project_queries
   end
 
   mutation do
     import_fields :user_mutation
     import_fields :auth_mutation
     import_fields :invite_mutation
+    import_fields :project_mutation
   end
 
   def context(context) do
