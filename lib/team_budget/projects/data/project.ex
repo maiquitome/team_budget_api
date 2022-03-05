@@ -25,7 +25,7 @@ defmodule TeamBudget.Projects.Data.Project do
   @doc false
   def changeset(project, attrs) do
     project
-    |> cast(attrs, [:name, :description, :slug, :budget])
+    |> cast(attrs, [:name, :description, :slug, :budget, :team_id])
     |> validate_required([:name, :description, :budget])
     |> Utils.create_slug(:name)
     |> unique_constraint(:slug)
