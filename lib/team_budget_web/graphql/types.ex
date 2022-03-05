@@ -14,6 +14,7 @@ defmodule TeamBudgetWeb.Graphql.Types do
   import_types Types.Custom.UUID4
   import_types Types.Invite
   import_types Types.Project
+  import_types Types.Role
   import_types Types.Team
   import_types Types.User
 end
