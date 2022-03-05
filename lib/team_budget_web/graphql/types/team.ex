@@ -34,14 +34,14 @@ defmodule TeamBudgetWeb.Graphql.Types.Team do
     @desc "Gets all teams by user_id"
     field :teams_by_user, list_of(:team) do
       arg :user_id, non_null(:uuid4)
-      middleware(Authorize, :team)
+      middleware(Authorize, :user)
       resolve &TeamResolver.get_all_teams_by_user_id/2
       middleware(Log)
     end
 
     @desc "Gets all teams of the logged in user"
     field :teams, list_of(:team) do
-      middleware(Authorize, :team)
+      middleware(Authorize, :user)
       resolve &TeamResolver.get_all_teams/3
       middleware(Log)
     end
