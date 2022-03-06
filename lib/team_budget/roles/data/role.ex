@@ -8,12 +8,22 @@ defmodule TeamBudget.Roles.Data.Role do
 
   alias Core.Utils
 
+  alias TeamBudget.{
+    Members.Data.Member,
+    MembersRoles.Data.MembersRoles,
+    PermissionRole.Data.PermissionRole,
+    Permissions.Data.Permission
+  }
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "roles" do
     field :description, :string
     field :name, :string
     field :slug, :string
+
+    many_to_many :permissions, Permission, join_through: PermissionRole, on_replace: :delete
+    many_to_many :members, Member, join_through: MembersRoles, on_replace: :delete
 
     timestamps()
   end
@@ -26,5 +36,11 @@ defmodule TeamBudget.Roles.Data.Role do
     |> Utils.create_slug(:name)
     |> unique_constraint(:slug)
     |> unique_constraint(:name)
+  end
+
+  def insert_permissions(%__MODULE__{} = role, [%Permission{} | _] = permissions) do
+    role
+    |> cast(%{}, ~w[name slug description]a)
+    |> put_assoc(:permissions, permissions)
   end
 end

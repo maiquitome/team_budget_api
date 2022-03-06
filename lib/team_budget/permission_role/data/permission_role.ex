@@ -11,8 +11,8 @@ defmodule TeamBudget.PermissionRole.Data.PermissionRole do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "permission_role" do
-    belongs_to :permissions, Permission
-    belongs_to :roles, Role
+    belongs_to :permission, Permission
+    belongs_to :role, Role
 
     timestamps()
   end
