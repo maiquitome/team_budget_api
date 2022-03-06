@@ -5,6 +5,8 @@ defmodule TeamBudget.Permissions.Data.Permission do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Core.Utils
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "permissions" do
@@ -19,7 +21,8 @@ defmodule TeamBudget.Permissions.Data.Permission do
   def changeset(permission, attrs) do
     permission
     |> cast(attrs, [:name, :slug, :description])
-    |> validate_required([:name, :slug, :description])
+    |> validate_required([:name, :description])
+    |> Utils.create_slug(:name)
     |> unique_constraint(:slug)
     |> unique_constraint(:name)
   end

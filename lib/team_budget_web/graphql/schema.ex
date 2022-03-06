@@ -13,6 +13,7 @@ defmodule TeamBudgetWeb.Graphql.Schema do
     import_fields :team_queries
     import_fields :project_queries
     import_fields :role_queries
+    import_fields :permission_queries
   end
 
   mutation do
@@ -21,6 +22,7 @@ defmodule TeamBudgetWeb.Graphql.Schema do
     import_fields :invite_mutation
     import_fields :project_mutation
     import_fields :role_mutation
+    import_fields :permission_mutation
   end
 
   def context(context) do
