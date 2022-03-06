@@ -1,4 +1,62 @@
-alias TeamBudget.{Accounts.Data.User, Members.Data.Member, Repo}
+alias TeamBudget.{
+  Accounts.Data.User,
+  Members.Data.Member,
+  Permissions.Data.Permission,
+  Repo,
+  Roles.Data.Role
+}
+
+##########################
+###### PERMISSIONS
+##########################
+
+send_invites =
+  Permission.changeset(%Permission{}, %{
+    name: "Send Invites",
+    description: "Allows your to send invites to other people"
+  })
+  |> Repo.insert!()
+
+create_project =
+  Permission.changeset(%Permission{}, %{
+    name: "Create Project",
+    description: "Allows your to create projects"
+  })
+  |> Repo.insert!()
+
+####################
+###### ROLES
+####################
+
+admin =
+  Role.changeset(%Role{}, %{
+    name: "Admin",
+    description: "Allows your to do everything"
+  })
+  |> Repo.insert!()
+  |> Repo.preload(:permissions)
+  |> Role.insert_permissions([create_project, send_invites])
+  |> Repo.update!()
+
+moderator =
+  Role.changeset(%Role{}, %{
+    name: "Moderator",
+    description: "Allows your only create projects"
+  })
+  |> Repo.insert!()
+  |> Repo.preload(:permissions)
+  |> Role.insert_permissions([create_project])
+  |> Repo.update!()
+
+Role.changeset(%Role{}, %{
+  name: "guest",
+  description: "You can do nothing"
+})
+|> Repo.insert!()
+
+####################
+###### USERS
+####################
 
 {:ok, %{id: user_id, teams: [%{id: team_id} | _]}} =
   %{

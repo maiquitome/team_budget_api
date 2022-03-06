@@ -7,12 +7,19 @@ defmodule TeamBudget.Permissions.Data.Permission do
 
   alias Core.Utils
 
+  alias TeamBudget.{
+    PermissionRole.Data.PermissionRole,
+    Roles.Data.Role
+  }
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "permissions" do
     field :description, :string
     field :name, :string
     field :slug, :string
+
+    many_to_many :roles, Role, join_through: PermissionRole, on_replace: :delete
 
     timestamps()
   end
