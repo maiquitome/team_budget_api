@@ -91,9 +91,6 @@ Role.changeset(%Role{}, %{
   |> User.changeset()
   |> Repo.insert()
 
-%Member{user_id: user_id, team_id: team_id}
-|> Repo.insert!()
-
 {:ok, _u2} =
   %{
     first_name: "Test2",
@@ -115,3 +112,13 @@ Role.changeset(%Role{}, %{
   }
   |> User.changeset()
   |> Repo.insert()
+
+####################
+###### MEMBERS
+####################
+
+%Member{user_id: user_id, team_id: team_id}
+|> Repo.insert!()
+|> Repo.preload(:roles)
+|> Member.insert_roles([admin])
+|> Repo.update!()

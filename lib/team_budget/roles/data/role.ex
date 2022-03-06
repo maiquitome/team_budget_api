@@ -9,8 +9,10 @@ defmodule TeamBudget.Roles.Data.Role do
   alias Core.Utils
 
   alias TeamBudget.{
+    Members.Data.Member,
+    MembersRoles.Data.MembersRoles,
     PermissionRole.Data.PermissionRole,
-    Permissions.Data.Permission
+    Permissions.Data.Permission,
   }
 
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -21,6 +23,7 @@ defmodule TeamBudget.Roles.Data.Role do
     field :slug, :string
 
     many_to_many :permissions, Permission, join_through: PermissionRole, on_replace: :delete
+    many_to_many :members, Member, join_through: MembersRoles, on_replace: :delete
 
     timestamps()
   end
@@ -37,7 +40,7 @@ defmodule TeamBudget.Roles.Data.Role do
 
   def insert_permissions(%__MODULE__{} = role, [%Permission{} | _] = permissions) do
     role
-    |> cast(%{}, ~w[name slug description]a)
+    |> cast(%{}, [])
     |> put_assoc(:permissions, permissions)
   end
 end
