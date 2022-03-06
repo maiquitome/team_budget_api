@@ -8,7 +8,9 @@ defmodule TeamBudget.Members.Data.Member do
 
   alias TeamBudget.{
     Accounts.Data.User,
+    MembersPermissions.Data.MembersPermissions,
     MembersRoles.Data.MembersRoles,
+    Permissions.Data.Permission,
     Roles.Data.Role,
     Teams.Data.Team
   }
@@ -20,11 +22,16 @@ defmodule TeamBudget.Members.Data.Member do
     belongs_to :team, Team
 
     many_to_many :roles, Role, join_through: MembersRoles, on_replace: :delete
+    many_to_many :permissions, Permission, join_through: MembersPermissions, on_replace: :delete
 
     timestamps()
   end
 
   @doc false
+  def changeset(%{} = attrs) do
+    changeset(%__MODULE__{}, attrs)
+  end
+
   def changeset(member, attrs) do
     member
     |> cast(attrs, [])
@@ -33,7 +40,13 @@ defmodule TeamBudget.Members.Data.Member do
 
   def insert_roles(%__MODULE__{} = member, [%Role{} | _] = roles) do
     member
-    |> cast(%{}, ~w[name slug description]a)
+    |> cast(%{}, [])
     |> put_assoc(:roles, roles)
+  end
+
+  def insert_permissions(%__MODULE__{} = member, [%Permission{} | _] = permissions) do
+    member
+    |> cast(%{}, [])
+    |> put_assoc(:permissions, permissions)
   end
 end

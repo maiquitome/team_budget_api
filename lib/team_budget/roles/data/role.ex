@@ -40,7 +40,7 @@ defmodule TeamBudget.Roles.Data.Role do
 
   def insert_permissions(%__MODULE__{} = role, [%Permission{} | _] = permissions) do
     role
-    |> cast(%{}, [])
+    |> cast(%{}, ~w[name slug description]a)
     |> put_assoc(:permissions, permissions)
   end
 end
