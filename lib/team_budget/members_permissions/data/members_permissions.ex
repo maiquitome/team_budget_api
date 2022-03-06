@@ -13,7 +13,6 @@ defmodule TeamBudget.MembersPermissions.Data.MembersPermissions do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "members_permissions" do
-
     belongs_to :member, Member
     belongs_to :permission, Permission
 

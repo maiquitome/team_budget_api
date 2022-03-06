@@ -12,7 +12,7 @@ defmodule TeamBudget.Roles.Data.Role do
     Members.Data.Member,
     MembersRoles.Data.MembersRoles,
     PermissionRole.Data.PermissionRole,
-    Permissions.Data.Permission,
+    Permissions.Data.Permission
   }
 
   @primary_key {:id, :binary_id, autogenerate: true}

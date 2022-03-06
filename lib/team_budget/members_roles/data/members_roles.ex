@@ -13,7 +13,6 @@ defmodule TeamBudget.MembersRoles.Data.MembersRoles do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "members_roles" do
-
     belongs_to :member, Member
     belongs_to :role, Role
 
